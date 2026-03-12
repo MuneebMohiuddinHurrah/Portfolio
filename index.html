@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronClad Hardware | Tools, Supplies & Service</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #ff9900; /* Construction Orange */
+            --secondary: #2c3e50; /* Dark Blue/Grey */
+            --light: #f4f4f4;
+            --dark: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #e68a00;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581783342308-f792ca11df53?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 15px 30px;
+            background-color: var(--primary);
+            border: none;
+            color: var(--white);
+            font-weight: bold;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        /* --- CATEGORIES --- */
+        .categories {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--light);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* --- FEATURED PRODUCTS --- */
+        .products {
+            padding: 4rem 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background-color: var(--primary);
+        }
+
+        /* --- SERVICES & INFO --- */
+        .services {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 4rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a252f;
+            color: #ccc;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hidden on mobile for simplicity in this demo */
+            }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">IronClad Hardware</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </nav>
+            <a href="tel:5551234567" class="cta-btn">Call (555) 123-4567</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Everything You Need to Build & Repair</h1>
+            <p>From plumbing parts to power tools, we have the pros covered.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products (e.g., 'hammer', 'paint')...">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🔨</div>
+                    <h3>Tools & Equipment</h3>
+                    <p>Power tools, hand tools, and storage.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🚿</div>
+                    <h3>Plumbing</h3>
+                    <p>Pipes, fittings, faucets, and water heaters.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⚡</div>
+                    <h3>Electrical</h3>
+                    <p>Wiring, lighting, and safety gear.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Paint & Decor</h3>
+                    <p>Interior/exterior paint and brushes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Featured Deals</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/300x200?text=Drill+Set" alt="Drill" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pro Cordless Drill Set</h3>
+                        <p>18V Battery included, 2-speed gearbox.</p>
+                        <span class="price">$89.99</span>
+                        <button class="add-btn" onclick="addToCart('Drill Set')">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/300x200?text=Paint+Can" alt="Paint" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Exterior Weather Shield Paint</h3>
+                        <p>1 Gallon, Satin Finish, White.</p>
+                        <span class="price">$24.50</span>
+                        <button class="add-btn" onclick="addToCart('Paint')">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/300x200?text=Hammer" alt="Hammer" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Heavy Duty Claw Hammer</h3>
+                        <p>16oz Fiberglass handle.</p>
+                        <span class="price">$12.99</span>
+                        <button class="add-btn" onclick="addToCart('Hammer')">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/300x200?text=Safety+Gear" alt="Safety" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Construction Safety Kit</h3>
+                        <p>Helmet, glasses, and gloves.</p>
+                        <span class="price">$35.00</span>
+                        <button class="add-btn" onclick="addToCart('Safety Kit')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title" style="color:white;">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>🔑 Key Cutting</h3>
+                    <p>We cut keys on-site for residential and automotive needs while you wait.</p>
+                </div>
+                <div class="service-item">
+                    <h3>🚚 Delivery</h3>
+                    <p>Heavy materials delivered straight to your job site. Call for a quote.</p>
+                </div>
+                <div class="service-item">
+                    <h3>🎨 Color Matching</h3>
+                    <p>Bring in a sample, and our computerized system will match any color.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>IronClad Hardware</h4>
+                    <p>Serving the community since 1985. Quality tools and expert advice.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Hours</h4>
+                    <p>Mon-Fri: 7am - 7pm</p>
+                    <p>Sat: 8am - 6pm</p>
+                    <p>Sun: 9am - 4pm</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>123 Main Street, Cityville</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: help@ironclad.com</p>
+                </div>
+            </div>
+            <p>&copy; 2023 IronClad Hardware. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to simulate adding to cart
+        function addToCart(productName) {
+            alert(productName + " has been added to your cart!");
+        }
+    </script>
+</body>
+</html>
